@@ -34,3 +34,43 @@ void Start() {
     wynik = 0;
     dlugoscOgona = 0;
 }
+// Plansza
+void Rysowanie() {
+    system("cls");
+
+
+    for (int i = 0; i < szerokosc + 2; i++) printf("#");
+    printf("\n");
+
+    for (int i = 0; i < wysokosc; i++) {
+        for (int j = 0; j < szerokosc; j++) {
+            if (j == 0) printf("#");
+
+            if (i == y && j == x) {
+                printf("O");
+            }
+            else if (i == owocY && j == owocX) {
+                printf("*");
+            }
+            else {
+                // Ogon
+                int czyWydrukowanoOgon = 0;
+                for (int k = 0; k < dlugoscOgona; k++) {
+                    if (ogonX[k] == j && ogonY[k] == i) {
+                        printf("o");
+                        czyWydrukowanoOgon = 1;
+                    }
+                }
+                if (!czyWydrukowanoOgon) printf(" ");
+            }
+
+            if (j == szerokosc - 1) printf("#");
+        }
+        printf("\n");
+    }
+
+
+    for (int i = 0; i < szerokosc + 2; i++) printf("#");
+    printf("\n");
+    printf("WYNIK: %d\n", wynik);
+}
