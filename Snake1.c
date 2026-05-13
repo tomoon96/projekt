@@ -1,3 +1,5 @@
+//Autorzy Projektu Snake: Łukasz Dudzik i Tomasz Undas
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
