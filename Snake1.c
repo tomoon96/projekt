@@ -115,7 +115,8 @@ void Logika() {
         poprzednieX = poprz2X;
         poprzednieY = poprz2Y;
     }
-    
+
+
     switch (kier) {
     case LEWO:  x--; break;
     case PRAWO: x++; break;
@@ -125,8 +126,7 @@ void Logika() {
     }
 
 
-    if (x >= szerokosc  x < 0
-        y >= wysokosc || y < 0) {
+    if (x >= szerokosc || x < 0 || y >= wysokosc || y < 0) {
         koniecGry = 1;
     }
 
