@@ -34,6 +34,7 @@ void Start() {
     wynik = 0;
     dlugoscOgona = 0;
 }
+
 // Plansza
 void Rysowanie() {
     system("cls");
@@ -74,3 +75,43 @@ void Rysowanie() {
     printf("\n");
     printf("WYNIK: %d\n", wynik);
 }
+
+// Klawisze
+void Klawiatura() {
+    if (_kbhit()) {
+        switch (_getch()) {
+        case 'a':
+            if (kier != PRAWO) kier = LEWO;
+            break;
+        case 'd':
+            if (kier != LEWO) kier = PRAWO;
+            break;
+        case 'w':
+            if (kier != DOL) kier = GORA;
+            break;
+        case 's':
+            if (kier != GORA) kier = DOL;
+            break;
+        case 'x':
+            koniecGry = 1;
+            break;
+        }
+    }
+}
+
+void Logika() {
+
+    int poprzednieX = ogonX[0];
+    int poprzednieY = ogonY[0];
+    int poprz2X, poprz2Y;
+    ogonX[0] = x;
+    ogonY[0] = y;
+
+    for (int i = 1; i < dlugoscOgona; i++) {
+        poprz2X = ogonX[i];
+        poprz2Y = ogonY[i];
+        ogonX[i] = poprzednieX;
+        ogonY[i] = poprzednieY;
+        poprzednieX = poprz2X;
+        poprzednieY = poprz2Y;
+    }
