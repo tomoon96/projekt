@@ -115,3 +115,48 @@ void Logika() {
         poprzednieX = poprz2X;
         poprzednieY = poprz2Y;
     }
+    
+    switch (kier) {
+    case LEWO:  x--; break;
+    case PRAWO: x++; break;
+    case GORA:  y--; break;
+    case DOL:   y++; break;
+    default: break;
+    }
+
+
+    if (x >= szerokosc  x < 0
+        y >= wysokosc || y < 0) {
+        koniecGry = 1;
+    }
+
+
+    for (int i = 0; i < dlugoscOgona; i++) {
+        if (ogonX[i] == x && ogonY[i] == y) {
+            koniecGry = 1;
+        }
+    }
+
+
+    if (x == owocX && y == owocY) {
+        wynik += 10;
+        owocX = rand() % szerokosc;
+        owocY = rand() % wysokosc;
+        dlugoscOgona++; // Wąż rośnie
+    }
+}
+
+int main() {
+    Start();
+
+    while (!koniecGry) {
+        Rysowanie();
+        Klawiatura();
+        Logika();
+        Sleep(100); // Prędkość gry
+    }
+
+    printf("\n KONIEC GRY! Twoj wynik to: %d\n", wynik);
+    system("pause"); // Okno konsoli
+    return 0;
+}
